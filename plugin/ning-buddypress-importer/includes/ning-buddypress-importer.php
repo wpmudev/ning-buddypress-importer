@@ -37,7 +37,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 //------------------------------------------------------------------------//
 
-register_activation_hook( __FILE__, 'nbi_install' );
+add_action( 'admin_init', 'nbi_install' );
 add_action( 'init', 'nbi_localization' );
 add_action( 'admin_menu', 'nbi_plug_pages' );
 
@@ -61,9 +61,10 @@ Please login (LOGINURL) and update your password to something more memorable.
 
 Thank you!
 The SITENAME Team";
-
-  add_option('nbi_email_subject', $subject, '', 'no');
-  add_option('nbi_email_text', $message, '', 'no');
+  if (!get_option('nbi_email_subject'))
+    add_option('nbi_email_subject', $subject, '', 'no');
+  if (!get_option('nbi_email_text'))
+    add_option('nbi_email_text', $message, '', 'no');
 }
 
 function nbi_localization() {
