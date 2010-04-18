@@ -570,7 +570,7 @@ function nbi_page_output() {
         //custom fields
         if (is_array($fields) && count($fields)) {
           ?>
-    			<h3><?php _e('Detected Custom Profile Fields', 'nbi') ?></h3>
+    			<h3><?php _e('Detected Custom Profile Fields:', 'nbi') ?></h3>
     			<p><?php _e('The following custom profile fields will be created if not existing and imported to BuddyPress. You should modify the field types and settings after import.', 'nbi') ?></p>
     			<?php
           echo '<ul style="margin-left: 40px">';
