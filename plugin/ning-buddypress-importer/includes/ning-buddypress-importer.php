@@ -65,6 +65,8 @@ The SITENAME Team";
     add_option('nbi_email_subject', $subject, '', 'no');
   if (!get_option('nbi_email_text'))
     add_option('nbi_email_text', $message, '', 'no');
+  if (!get_option('nbi_source'))
+    add_option('nbi_source', 'name', '', 'no');
 }
 
 function nbi_localization() {
@@ -169,15 +171,23 @@ function nbi_process_import_queue() {
     //loop through queue
     foreach ($users as $user) {
 
-      //get username from email prefix
-      $temp_email = explode('@', $user['Email']);
-      $username = sanitize_user($temp_email[0], true);
+      //create username
+      $source = get_option('nbi_source');
+      if ($source == 'email') {
+        //get username from sanitized email prefix
+        $temp_email = explode('@', $user['Email']);
+        $username = sanitize_user($temp_email[0], true);
+      } else {
+        //get username from sanitized name field
+        $username = sanitize_user(trim(str_replace(' ', '', $user['Name']), '.'), true);
+      }
 
       //make username unique by apending a number
       $i = 0;
+      $original_username = $username;
       while (username_exists($username)) {
         $i++;
-        $username = $username . $i;
+        $username = $original_username . $i;
       }
 
       //check email
@@ -581,6 +591,17 @@ function nbi_page_output() {
           <textarea name="email_text" cols="100" rows="10"><?php echo esc_attr(stripslashes(get_option('nbi_email_text'))) ?></textarea><br />
           <small><?php _e('No HTML allowed. The following codes will be replaced with their appropriate values: FULLNAME, USERNAME, PASSWORD, EMAIL, LOGINURL, SITENAME', 'nbi') ?></small>
   			</p>
+  			
+  			<h3><?php _e('New Username Source:', 'nbi') ?></h3>
+  			<p>
+          <select name="source">
+            <option value="name"<?php selected(get_option('nbi_source'), 'name') ?>><?php _e('Display Name', 'nbi') ?></option>
+            <option value="email"<?php selected(get_option('nbi_source'), 'email') ?>><?php _e('Email Prefix', 'nbi') ?></option>
+          </select>
+          <br />
+          <small><?php _e('Though your Ning members are used to logging in with their email address, usernames will be used in BuddyPress in profile url slugs and @username replies. Because of this in most cases we recommend choosing the display name as that is what was public before.', 'nbi') ?></small>
+        </p>
+  			
   			<p><?php _e('Please be patient while members are being imported. The page will attempt to import 5 members at a time then refresh to import the next batch. Don\'t worry if you have duplicate members in your csv as it will skip existing BuddyPress users if their email address exists. Ready?', 'nbi') ?></p>
   			<p class="submit">
   			  <input name="Submit" value="<?php _e('Import Members &raquo;', 'nbi') ?>" type="submit">
@@ -615,6 +636,9 @@ function nbi_page_output() {
       if (isset($_POST['email_subject'])) {
         update_option('nbi_email_subject', strip_tags($_POST['email_subject']));
         update_option('nbi_email_text', strip_tags($_POST['email_text']));
+        update_option('nbi_source', $_POST['source']);
+        
+        nbi_create_buddypress_fields();
       }
 
       ?>
@@ -623,7 +647,6 @@ function nbi_page_output() {
 			<?php
 			//if file has been uploaded
       if (file_exists(nbi_file_path())) {
-        nbi_create_buddypress_fields();
         nbi_process_import_queue();
       }
 		break;
