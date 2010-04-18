@@ -602,6 +602,7 @@ function nbi_page_output() {
           <small><?php _e('Though your Ning members are used to logging in with their email address, usernames will be used in BuddyPress in profile url slugs and @username replies. Because of this in most cases we recommend choosing the display name as that is what was public before.', 'nbi') ?></small>
         </p>
   			
+  			<br />
   			<p><?php _e('Please be patient while members are being imported. The page will attempt to import 5 members at a time then refresh to import the next batch. Don\'t worry if you have duplicate members in your csv as it will skip existing BuddyPress users if their email address exists. Ready?', 'nbi') ?></p>
   			<p class="submit">
   			  <input name="Submit" value="<?php _e('Import Members &raquo;', 'nbi') ?>" type="submit">
