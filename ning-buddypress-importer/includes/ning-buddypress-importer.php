@@ -147,6 +147,15 @@ function nbi_process_import_queue() {
     //loop through queue
     foreach ($users as $user) {
 
+      //check email
+      if (email_exists($user['Email'])) {
+        $errors[] = __('Skipped - Email address already in use: ', 'nbi') . $user['Email'];
+        //fatal error, so skip to next user
+        $count++;
+        update_option('nbi_count', $count);
+        continue;
+      }
+      
       //create username
       $source = get_option('nbi_source');
       if ($source == 'email') {
@@ -164,15 +173,6 @@ function nbi_process_import_queue() {
       while (username_exists($username)) {
         $i++;
         $username = $original_username . $i;
-      }
-
-      //check email
-      if (email_exists($user['Email'])) {
-        $errors[] = __('Skipped - Email address already in use: ', 'nbi') . $user['Email'];
-        //fatal error, so skip to next user
-        $count++;
-        update_option('nbi_count', $count);
-        continue;
       }
 
       //seperate first/last name
@@ -200,7 +200,7 @@ function nbi_process_import_queue() {
                     ));
       //*/
       
-  		if (!$user_id) {
+  		if ( is_wp_error($user_id) ) {
   			$errors[] = __('Could not create user: ', 'nbi') . $user['Name'] . ' (' . $username . ')';
   		} else {
 
