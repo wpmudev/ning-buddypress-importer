@@ -20,6 +20,7 @@ Plugin Name: Ning To BuddyPress User Importer
 add_action( 'admin_init', 'nbi_install' );
 add_action( 'init', 'nbi_localization' );
 add_action( 'admin_menu', 'nbi_plug_pages' );
+add_action( 'network_admin_menu', 'nbi_plug_pages' );
 
 //------------------------------------------------------------------------//
 
