@@ -329,8 +329,10 @@ function nbi_fetch_ning_avatar( $user_id, $profile_url ) {
     return false;
 
   $sub_html = trim(substr($profile_page, strpos($profile_page, 'class="module_user_thumbnail"', 2000) + 30, 200));
-  $img_url = substr($sub_html, strpos($sub_html, 'src="http://api.ning.com/files/') + 5);
+  $img_url = substr($sub_html, strpos($sub_html, 'src="http://api.ning.com:80/files/') + 5);
+  //$img_url = substr($sub_html, strpos($sub_html, 'src="http://api.ning.com/files/') + 5);
   $img_url = substr($img_url, 0, strpos($img_url, '?'));
+
   if (!$img_url)
     return false;
     
@@ -381,10 +383,14 @@ function nbi_fetch_ning_avatar( $user_id, $profile_url ) {
 		@unlink($new_file);
 		return new WP_Error( 'import_file_error', __('Remote file is incorrect size') );
 	}
-	
+
   //if file extension is bin rename it based on image headers
 	if ( preg_match( '!\.(bin)$!i', $filename ) ) {
-    if ( strpos($headers['content-type'], 'image/jpeg') !== false ) {
+    if ( 
+		strpos($headers['content-type'], 'image/jpeg') !== false 
+		||
+		strpos($headers['content-type'], 'image/pjpeg') !== false
+	) {
       $renamed = str_replace('.bin', '.jpg', $new_file);
       @rename($new_file, $renamed);
       $new_file = $renamed;
@@ -409,7 +415,8 @@ function nbi_fetch_ning_avatar( $user_id, $profile_url ) {
   }
   
   //save to buddypress
-  $avatar_folder_dir = apply_filters( 'bp_core_avatar_folder_dir', BP_AVATAR_UPLOAD_PATH . '/avatars/' . $user_id, $user_id, 'user', 'avatars' );
+  //$avatar_folder_dir = apply_filters( 'bp_core_avatar_folder_dir', BP_AVATAR_UPLOAD_PATH . '/avatars/' . $user_id, $user_id, 'user', 'avatars' );
+  $avatar_folder_dir = apply_filters( 'bp_core_avatar_folder_dir', bp_core_avatar_upload_path() . '/avatars/' . $user_id, $user_id, 'user', 'avatars' );
 
   require_once( ABSPATH . '/wp-admin/includes/image.php' );
 	require_once( ABSPATH . '/wp-admin/includes/file.php' );

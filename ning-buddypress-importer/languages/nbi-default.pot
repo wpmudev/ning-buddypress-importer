@@ -1,0 +1,190 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Ning\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-12-15 16:43-0600\n"
+"PO-Revision-Date: 2011-12-15 16:44-0600\n"
+"Last-Translator: Aaron Edwards\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;_e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer\n"
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/loader.php:42
+msgid "Please install the latest version of <a href=\"http://premium.wpmudev.org/project/update-notifications/\" title=\"Download Now &raquo;\">our free Update Notifications plugin</a> which helps you stay up-to-date with the most stable, secure versions of WPMU DEV themes and plugins. <a href=\"http://premium.wpmudev.org/wpmu-dev/update-notifications-plugin-information/\">More information &raquo;</a>"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:60
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:511
+msgid "Ning Importer"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:153
+msgid "Skipped - Email address already in use: "
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:205
+msgid "Could not create user: "
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:222
+#, php-format
+msgid "Successfully Imported: %s - %s (%s)"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:237
+#, php-format
+msgid "Processed %d of %d members so far. Please be patient as this process may take a while."
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:241
+msgid "If your browser doesn&#8217;t start loading the next page automatically, click this link:"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:241
+msgid "Next Members"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:254
+#, php-format
+msgid "Congratulations! %d of %d members were imported successfully."
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:256
+msgid "They should be recieving your notification email with their username and temporary random password."
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:257
+msgid "Adjust Profile Fields"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:262
+#, php-format
+msgid "%d errors were encountered during the import:"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:353
+#, php-format
+msgid "Unable to create directory %s. Is its parent directory writable by the server?"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:359
+#, php-format
+msgid "Could not write file %s"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:375
+msgid "Remote server did not respond"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:381
+#, php-format
+msgid "Remote file returned error response %1$d %2$s"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:384
+msgid "Remote file is incorrect size"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:407
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:413
+msgid "Invalid file type"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:517
+msgid "Import file successfully deleted."
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:532
+msgid "There was a problem uploading your file. Please check permissions or use FTP."
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:541
+msgid "Invalid file format. Please upload your export file ending in \".csv\"."
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:552
+#, php-format
+msgid "A Ning import file was detected with %d members to process."
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:553
+msgid "Delete Import File"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:559
+msgid "Detected Custom Profile Fields:"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:560
+msgid "The following custom profile fields will be created if not existing and imported to BuddyPress. You should modify the field types and settings after import."
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:569
+msgid "Customize Your Email Notification:"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:571
+msgid "Subject:"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:573
+msgid "No HTML allowed. The following codes will be replaced with their appropriate values: FULLNAME, USERNAME, EMAIL, SITENAME"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:576
+msgid "Message:"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:578
+msgid "No HTML allowed. The following codes will be replaced with their appropriate values: FULLNAME, USERNAME, PASSWORD, EMAIL, LOGINURL, SITENAME"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:581
+msgid "New Username Source:"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:584
+msgid "Display Name"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:585
+msgid "Email Prefix"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:588
+msgid "Though your Ning members are used to logging in with their email address, usernames will be used in BuddyPress in profile url slugs and @username replies. Because of this in most cases we recommend choosing the display name as that is what was public before."
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:592
+msgid "Please be patient while members are being imported. The page will attempt to import 5 members at a time then refresh to import the next batch. Don't worry if you have duplicate members in your csv as it will skip existing BuddyPress users if their email address exists. Ready?"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:594
+msgid "Import Members &raquo;"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:598
+msgid "<strong>Please Note:</strong><br /><br />Spam filters, especially strict ones for institutional email addresses, can sometimes block this username and login information from reaching your members. You should consider also sending out a bulk email via another method to your network notifying them of the migration and who to contact if they don't recieve this notification."
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:606
+#, php-format
+msgid "Please <a href=\"http://help.ning.com/cgi-bin/ning.cfg/php/enduser/std_adp.php?p_faqid=3023\" target=\"_blank\">export your Ning network members to a CSV file</a> and upload that file here. If your CSV is too large, you can ftp it to the \"%s\" directory and rename it to \"ning-export.csv\"."
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:609
+msgid "Maximum file size: "
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:612
+msgid "Upload &raquo;"
+msgstr ""
+
+#: /Users/aaron2/Documents/WPMU-Test/wp-content/plugins/ning-buddypress-importer/includes/ning-buddypress-importer.php:632
+msgid "Importing Members..."
+msgstr ""
+
