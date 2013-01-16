@@ -209,6 +209,10 @@ function nbi_process_import_queue() {
   			if (function_exists('bp_is_active')) {
   		    nbi_import_buddypress_fields($user_id, $user);
   		    
+					// Set last active
+					$current_time = bp_core_current_time();
+					bp_update_user_meta( $user_id, 'last_activity', $current_time );
+					
   		    //scrape avatar
           nbi_fetch_ning_avatar( $user_id, $user['Profile Address'] );
         }
