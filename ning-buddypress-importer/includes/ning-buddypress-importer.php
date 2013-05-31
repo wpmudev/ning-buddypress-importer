@@ -339,9 +339,12 @@ function nbi_fetch_ning_avatar( $user_id, $profile_url ) {
 	
   if (!$img_url)
     return false;
-
+	
+	if ( false !== ($pos = strpos($img_url, '?') ) )
+		$img_url = substr($img_url, 0, $pos);
+		
   $url = add_query_arg( array('width' => BP_AVATAR_FULL_WIDTH, 'height' => BP_AVATAR_FULL_HEIGHT, 'crop' => '1%3A1'), $img_url );
-  
+	
 	// extract the file name and extension from the url
 	$file_name = basename($img_url);
 
@@ -646,15 +649,4 @@ function nbi_page_output() {
 	
 	echo '</div>';
 }
-
-
-
-//------------------------------------------------------------------------//
-
-//---Support Functions----------------------------------------------------//
-
-//------------------------------------------------------------------------//
-
-
-
 ?>
