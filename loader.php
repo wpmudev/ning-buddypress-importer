@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Ning To BuddyPress User Importer
-Version: 1.1
+Version: 1.2
 Plugin URI: http://premium.wpmudev.org/project/ning-to-buddypress-user-importer/
 Description: Allows you to do a full import of a Ning network's users, their custom profile fields, and avatars to BuddyPress. Full support for very large member lists via optional FTP upload and batch processing.
 Author: Aaron Edwards (Incsub)
@@ -9,7 +9,7 @@ Author URI: http://uglyrobot.com
 Text Domain: nbi
 WDP ID: 129
 
-Copyright 2009-2013 Incsub (http://incsub.com)
+Copyright 2009-2014 Incsub (http://incsub.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as published by
@@ -31,5 +31,6 @@ function nbi_init() {
 }
 add_action( 'bp_include', 'nbi_init' );
 
+global $wpmudev_notices;
+$wpmudev_notices[] = array( 'id'=> 129, 'name'=> 'Ning To BuddyPress User Importer', 'screens' => array( 'buddypress_page_ning-importer' ) ); 
 include_once( dirname( __FILE__ ) . '/includes/dash-notice/wpmudev-dash-notification.php' );
-?>

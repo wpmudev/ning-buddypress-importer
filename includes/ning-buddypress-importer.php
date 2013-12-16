@@ -46,6 +46,8 @@ The SITENAME Team";
     add_option('nbi_email_subject', $subject, '', 'no');
   if (!get_option('nbi_email_text'))
     add_option('nbi_email_text', $message, '', 'no');
+  if (!get_option('nbi_email_nosend'))
+    add_option('nbi_email_nosend', 0, '', 'no');
   if (!get_option('nbi_source'))
     add_option('nbi_source', 'name', '', 'no');
 }
@@ -457,6 +459,9 @@ function nbi_fetch_ning_avatar( $user_id, $profile_url ) {
 //------------------------------------------------------------------------//
 
 function nbi_new_user_notification($user_id, $plaintext_pass) {
+	//skip email if turned off
+	if ( get_option('nbi_email_nosend') ) return false;
+	
 	$user = new WP_User($user_id);
 
 	$user_login = stripslashes($user->user_login);
@@ -584,6 +589,11 @@ function nbi_page_output() {
           <textarea name="email_text" cols="100" rows="10"><?php echo esc_attr(stripslashes(get_option('nbi_email_text'))) ?></textarea><br />
           <small><?php _e('No HTML allowed. The following codes will be replaced with their appropriate values: FULLNAME, USERNAME, PASSWORD, EMAIL, LOGINURL, SITENAME', 'nbi') ?></small>
   			</p>
+				<p>
+          <label for="email_nosend">
+          <input name="email_nosend" type="checkbox" value="1" /> <?php _e("Don't send emails", 'nbi') ?></label><br />
+          <small><?php _e('If you are wanting to test the import or just not send email notifications you may check this box.', 'nbi') ?></small>
+  			</p>
   			
   			<h3><?php _e('New Username Source:', 'nbi') ?></h3>
   			<p>
@@ -598,7 +608,7 @@ function nbi_page_output() {
   			<br />
   			<p><?php _e('Please be patient while members are being imported. The page will attempt to import 5 members at a time then refresh to import the next batch. Don\'t worry if you have duplicate members in your csv as it will skip existing BuddyPress users if their email address exists. Ready?', 'nbi') ?></p>
   			<p class="submit">
-  			  <input name="Submit" value="<?php _e('Import Members &raquo;', 'nbi') ?>" type="submit">
+  			  <input name="Submit" class="button-primary" value="<?php _e('Import Members &raquo;', 'nbi') ?>" type="submit">
   			</p>
   			</form>
         <p>
@@ -610,13 +620,13 @@ function nbi_page_output() {
       
   		  ?>
   			<form action="admin.php?page=ning-importer" method="post" enctype="multipart/form-data">
-  			<p><?php echo sprintf(__('Please <a href="http://help.ning.com/cgi-bin/ning.cfg/php/enduser/std_adp.php?p_faqid=3023" target="_blank">export your Ning network members to a CSV file</a> and upload that file here. If your CSV is too large, you can ftp it to the "%s" directory and rename it to "ning-export.csv".', 'nbi'), nbi_file_path(true)); ?></p>
+  			<p><?php echo sprintf(__('Please <a href="http://www.ning.com/ning3help/export-member-information/" target="_blank">export your Ning network members to a CSV file</a> and upload that file here. If your CSV is too large, you can ftp it to the "%s" directory and rename it to "ning-export.csv".', 'nbi'), nbi_file_path(true)); ?></p>
   			<p>
   			  <input name="csv_file" id="csv_file" size="20" type="file" /><br />
   			  <small><?php echo __('Maximum file size: ', 'nbi') . ini_get('upload_max_filesize'); ?></small>
   			</p>
   			<p class="submit">
-  			  <input name="Submit" value="<?php _e('Upload &raquo;', 'nbi') ?>" type="submit">
+  			  <input name="Submit" class="button-primary" value="<?php _e('Upload &raquo;', 'nbi') ?>" type="submit">
   			</p>
   			</form>
         <?php
@@ -630,6 +640,7 @@ function nbi_page_output() {
       if (isset($_POST['email_subject'])) {
         update_option('nbi_email_subject', strip_tags($_POST['email_subject']));
         update_option('nbi_email_text', strip_tags($_POST['email_text']));
+        update_option('nbi_email_nosend', (isset($_POST['email_nosend']) ? 1 : 0));
         update_option('nbi_source', $_POST['source']);
         
         nbi_create_buddypress_fields();
