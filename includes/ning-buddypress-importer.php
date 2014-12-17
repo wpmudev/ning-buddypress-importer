@@ -333,14 +333,21 @@ function nbi_fetch_ning_avatar( $user_id, $profile_url ) {
   $profile_page = wp_remote_retrieve_body(wp_remote_get($profile_url));
   if (!$profile_page)
     return false;
-	
+
 	$regex = '/_origImgUrl=([\'"])?((?(1).+?|[^\s>]+))(?(1)\1)/';
 	if (preg_match($regex, $profile_page, $match)) {
 		$img_url = urldecode($match[2]);
 	}
-	
-  if (!$img_url)
-    return false;
+
+  //profile page is different, so try just fetching first image
+  if (!$img_url) {
+	  $regex = '/<img\s+[^>]*src="([^"]*)"[^>]*>/';
+	  if (preg_match($regex, $profile_page, $match)) {
+		  $img_url = urldecode($match[1]);
+	  }
+  }
+
+	if (!$img_url) return false; //still no image skip
 	
 	if ( false !== ($pos = strpos($img_url, '?') ) )
 		$img_url = substr($img_url, 0, $pos);
