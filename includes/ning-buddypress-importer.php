@@ -536,7 +536,7 @@ function nbi_page_output() {
 	global $wpdb;
 
 	//only show to site admins if on wpmu
-	if ( bp_core_is_multisite() && ! is_site_admin() ) {
+	if ( is_multisite() && ! is_site_admin() ) {
 		echo "<p>Nice Try...</p>";  //If accessed properly, this message doesn't appear.
 		return;
 	}
